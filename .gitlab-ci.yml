@@ -1,0 +1,20 @@
+stages:
+  - test
+  - security
+
+variables:
+  RUBY_VERSION: "3.2"
+
+test:
+  stage: test
+  image: ruby:${RUBY_VERSION}
+  script:
+    - ./ci-scripts/test.sh
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+
+sast:
+  stage: security
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
