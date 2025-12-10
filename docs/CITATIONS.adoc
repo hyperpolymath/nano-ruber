@@ -1,0 +1,36 @@
+= nano-ruber - Citation Guide
+:toc:
+
+== BibTeX
+
+[source,bibtex]
+----
+@software{nano-ruber_2025,
+  author = {Polymath, Hyper},
+  title = {nano-ruber},
+  year = {2025},
+  url = {https://github.com/hyperpolymath/nano-ruber},
+  license = {AGPL-3.0-or-later}
+}
+----
+
+== Harvard Style
+
+Polymath, H. (2025) _nano-ruber_ [Computer software]. Available at: https://github.com/hyperpolymath/nano-ruber
+
+== OSCOLA
+
+Hyper Polymath, 'nano-ruber' (2025) <https://github.com/hyperpolymath/nano-ruber>
+
+== MLA
+
+Polymath, Hyper. "nano-ruber." 2025, github.com/hyperpolymath/nano-ruber.
+
+== APA 7
+
+Polymath, H. (2025). _nano-ruber_ [Computer software]. GitHub. https://github.com/hyperpolymath/nano-ruber
+
+== See Also
+
+* link:../CITATION.cff[CITATION.cff]
+* link:../codemeta.json[codemeta.json]
