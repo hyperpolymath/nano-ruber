@@ -1,6 +1,13 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "rebornix.Ruby",
+  "editor.defaultFormatter": "AdaCore.ada",
   "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "ada.projectFile": "nano_aider.gpr",
+  "ada.defaultCharset": "UTF-8",
+  "[ada]": {
+    "editor.tabSize": 3,
+    "editor.insertSpaces": true,
+    "editor.rulers": [80]
+  }
 }
