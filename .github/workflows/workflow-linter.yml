@@ -106,7 +106,7 @@ jobs:
           has_go=$(find . -name "*.go" -path "*/src/*" -o -path "*/cmd/*" -o -path "*/pkg/*" 2>/dev/null | head -1)
           has_rs=$(find . -name "*.rs" -path "*/src/*" 2>/dev/null | head -1)
           has_java=$(find . -name "*.java" -path "*/src/*" 2>/dev/null | head -1)
-          has_rb=$(find . -name "*.rb" -path "*/lib/*" -o -path "*/app/*" 2>/dev/null | head -1)
+          has_ada=$(find . -name "*.ads" -o -name "*.adb" -path "*/src/*" 2>/dev/null | head -1)
 
           echo "Detected languages:"
           [ -n "$has_js" ] && echo "  - javascript-typescript"
@@ -114,7 +114,7 @@ jobs:
           [ -n "$has_go" ] && echo "  - go"
           [ -n "$has_rs" ] && echo "  - rust (note: CodeQL rust is limited)"
           [ -n "$has_java" ] && echo "  - java-kotlin"
-          [ -n "$has_rb" ] && echo "  - ruby"
+          [ -n "$has_ada" ] && echo "  - ada (note: use SPARK for Ada verification)"
 
           # Check for over-reach
           if grep -q "language:.*'go'" .github/workflows/codeql.yml && [ -z "$has_go" ]; then
@@ -125,9 +125,6 @@ jobs:
           fi
           if grep -q "language:.*'java'" .github/workflows/codeql.yml && [ -z "$has_java" ]; then
             echo "WARNING: CodeQL configured for Java but no Java files found"
-          fi
-          if grep -q "language:.*'ruby'" .github/workflows/codeql.yml && [ -z "$has_rb" ]; then
-            echo "WARNING: CodeQL configured for Ruby but no Ruby files found"
           fi
 
           echo "CodeQL check complete"

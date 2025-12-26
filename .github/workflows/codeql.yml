@@ -1,5 +1,9 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-License-Identifier: MIT OR AGPL-3.0-or-later
 name: CodeQL Security Analysis
+
+# Note: CodeQL does not natively support Ada/SPARK
+# This workflow is configured for security scanning of shell scripts and YAML
+# For Ada security verification, use GNATprove (SPARK) in the CI workflow
 
 on:
   push:
@@ -13,28 +17,46 @@ permissions: read-all
 
 jobs:
   analyze:
+    name: Security Analysis
     runs-on: ubuntu-latest
     permissions:
       contents: read
       security-events: write
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - language: ruby
-            build-mode: none
 
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@662472033e021d55d94146f66f6058822b0b39fd # v3.28.1
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # v2.0.0
         with:
-          languages: ${{ matrix.language }}
-          build-mode: ${{ matrix.build-mode }}
+          scandir: './ci-scripts'
+          severity: warning
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@662472033e021d55d94146f66f6058822b0b39fd # v3.28.1
-        with:
-          category: "/language:${{ matrix.language }}"
+      - name: YAML lint
+        run: |
+          # Validate workflow files
+          for file in .github/workflows/*.yml; do
+            echo "Checking $file..."
+            python3 -c "import yaml; yaml.safe_load(open('$file'))" || exit 1
+          done
+          echo "All workflow files are valid YAML"
+
+      - name: Security patterns check
+        run: |
+          # Check for common security issues in scripts
+          echo "Checking for security patterns..."
+
+          # Check for hardcoded secrets patterns
+          if grep -rE "(password|secret|api.?key)\s*=\s*['\"][^'\"]+['\"]" ci-scripts/ 2>/dev/null; then
+            echo "WARNING: Potential hardcoded secrets found"
+            exit 1
+          fi
+
+          # Check for unsafe eval usage
+          if grep -rE "eval\s+\\\$" ci-scripts/ 2>/dev/null; then
+            echo "WARNING: Unsafe eval usage detected"
+            exit 1
+          fi
+
+          echo "Security patterns check passed"
