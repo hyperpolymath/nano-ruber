@@ -1,6 +1,12 @@
 = nano-aider
 
-image:https://img.shields.io/badge/license-Palimpsest--MPL--1.0-purple.svg[Palimpsest-MPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"] image:https://img.shields.io/badge/philosophy-Palimpsest-purple.svg[Palimpsest,link="https://github.com/hyperpolymath/palimpsest-licence"]
+image:https://img.shields.io/badge/License-MPL_2.0-blue.svg[MPL-2.0-or-later,link="https://opensource.org/licenses/MPL-2.0"]
+
+== License & Philosophy
+
+This project must declare **MPL-2.0-or-later** for platform/tooling compatibility.
+
+Philosophy: **Palimpsest**. The Palimpsest-MPL (PMPL) text is provided in `license/PMPL-1.0.txt`, and the canonical source is the palimpsest-license repository.
 Jonathan D.A. Jewell <jonathan.jewell@gmail.com>
 :toc: macro
 :toc-title: Contents
@@ -26,7 +32,7 @@ image:https://img.shields.io/badge/Language-Ada_2022-blue?logo=ada[Ada 2022]
 image:https://img.shields.io/badge/TUI-ncurses-green[ncurses TUI]
 image:https://img.shields.io/badge/SPARK-Ready-purple[SPARK Ready]
 image:https://img.shields.io/badge/RSR-Certified-gold[RSR Certified,link=https://github.com/hyperpolymath/rhodium-standard-repositories]
-image:https://img.shields.io/badge/License-MIT%20OR%20AGPL--3.0-orange[License]
+image:https://img.shields.io/badge/License-MPL_2.0-blue.svg[MPL-2.0-or-later,link="https://opensource.org/licenses/MPL-2.0"]
 
 [.lead]
 **nano-aider** is a sophisticated Terminal User Interface (TUI) application written in Ada that discovers, documents, and manages the extensive—and often hidden—configuration options available in the {url-nano}[GNU nano] and {url-micro}[micro] text editors.

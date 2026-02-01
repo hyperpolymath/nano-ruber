@@ -5,7 +5,7 @@
 [![Ada 2022](https://img.shields.io/badge/Language-Ada_2022-blue?logo=ada)](https://ada-lang.io)
 [![ncurses TUI](https://img.shields.io/badge/TUI-ncurses-green)](https://invisible-island.net/ncurses/)
 [![SPARK Ready](https://img.shields.io/badge/SPARK-Ready-purple)](https://www.adacore.com/about-spark)
-[![License](https://img.shields.io/badge/License-MIT%20OR%20AGPL--3.0-orange)](LICENSE.txt)
+image:https://img.shields.io/badge/License-MPL_2.0-blue.svg[MPL-2.0-or-later,link="https://opensource.org/licenses/MPL-2.0"]
 
 > Discover and manage the extensive—and often hidden—configuration options in nano and micro text editors.
 
